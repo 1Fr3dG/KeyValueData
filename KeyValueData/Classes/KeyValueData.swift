@@ -42,6 +42,9 @@ public protocol KeyValueData {
     /// 使用 key 初始化一个存储单元
     ///
     /// init and load data
+    /// - parameter withKey:
+    ///     - 用于定位特定存储
+    ///     - identify data store
     init(withKey: String)
     
     /// 清除数据
