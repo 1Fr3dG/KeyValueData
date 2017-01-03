@@ -11,10 +11,12 @@ import Foundation
 ///
 /// Store Key-Value data
 public protocol KeyValueData {
+    
     /// 数据 key, 必须全应用唯一
     ///
     /// key, must be unique
     var key : String { get }
+    
     /// 下标列表
     ///
     /// List of keys, so we can perform loop
@@ -33,6 +35,8 @@ public protocol KeyValueData {
     /// 下标访问
     ///
     /// access the data by key
+    /// - parameter Index: Key
+    /// - returns: Value
     subscript(Index: String) -> Any? { get set }
     
     /// 使用 key 初始化一个存储单元
