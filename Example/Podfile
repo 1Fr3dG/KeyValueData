@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KeyValueData_Example' do
+  pod 'KeyValueData', :path => '../'
+
+  target 'KeyValueData_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
