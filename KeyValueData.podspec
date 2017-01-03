@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KeyValueData'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'Key-Value data store protocol.'
 
   s.description      = <<-DESC
@@ -9,7 +9,6 @@ Include .plist, KeyChain, UserDefault as well as Sqlite.
                        DESC
 
   s.homepage         = 'https://github.com/1fr3dg/KeyValueData'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Alfred Gao' => 'alfredg@alfredg.cn' }
   s.source           = { :git => 'https://github.com/1fr3dg/KeyValueData.git', :tag => s.version.to_s }
