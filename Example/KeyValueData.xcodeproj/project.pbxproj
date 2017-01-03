@@ -39,7 +39,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* KeyValueData_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyValueData_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Tests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6C48F1A8ACA34E6DAC49D218 /* Pods_KeyValueData_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyValueData_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7932429EE035F18359428570 /* Pods-KeyValueData_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyValueData_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyValueData_Tests/Pods-KeyValueData_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8B5C3B1487409132C4F08003 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -192,6 +192,7 @@
 				607FACE31AFB9204008FA782 /* Resources */,
 				E4F78C9233C84E5021B133B1 /* [CP] Embed Pods Frameworks */,
 				0A5AD5FAB49E1B8CE8848DFA /* [CP] Copy Pods Resources */,
+				3A293BCE1E1C088700888C46 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -293,6 +294,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyValueData_Example/Pods-KeyValueData_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		3A293BCE1E1C088700888C46 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "find ${TARGET_BUILD_DIR} -type d -name \"*.framework\" -exec cp -Rf {} ${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ \\;";
 		};
 		476DC715F06E8A22E1359029 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
