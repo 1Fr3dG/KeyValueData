@@ -90,7 +90,6 @@ public class KeyValueDictionaryInSqlite: NSObject, KeyValueData {
     init(withKey: String, inDatabase: String) {
         key = withKey
         dbFile = NSHomeDirectory()+"/Documents/\(inDatabase).sqlite"
-        let _dbname = dbFile
         do {
             db = try Connection(dbFile)
         } catch {
