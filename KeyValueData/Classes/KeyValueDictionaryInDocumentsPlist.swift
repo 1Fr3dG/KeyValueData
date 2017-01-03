@@ -1,40 +1,21 @@
 //
-//  KeyValueDictionaryInUserDefaults.swift
+//  KeyValueDictionaryInDocumentsPlist.swift
 //
-//  Created by Alfred Gao on 2017/1/3.
+//  Created by Alfred Gao on 2017/1/4.
 //
 //
 
-import Foundation
 
-public class KeyValueDictionaryInUserDefaults: NSObject, KeyValueData {
+
+/// 使用 Documents\*.plist 存储简单数据
+///
+/// Save kv-data to Documents\*.plist
+public class KeyValueDictionaryInDocumentsPlist: NSObject, KeyValueData {
 
     public let key: String
     
-    public var impontanceLevel: Int = 16 {
-        didSet {
-            if impontanceLevel > 256 {
-                impontanceLevel = 256
-            } else if impontanceLevel < 1 {
-                impontanceLevel = 1
-            }
-            
-            sync()
-            _valueEditTime = 0
-        }
-    }
-    
-    /// 数据改写次数
-    ///
-    /// value changed count
-    private var _valueEditTime = 0
-    
-    /// 数据
-    ///
-    /// raw data
     var value: [String: Any] = [:] {
         didSet {
-            UserDefaults.standard.set(value, forKey: key)
             _valueEditTime += 1
             if _valueEditTime >= impontanceLevel {
                 sync()
@@ -46,6 +27,24 @@ public class KeyValueDictionaryInUserDefaults: NSObject, KeyValueData {
     public var keys: [String] {
         return value.map{(key, value) -> String in return key}
     }
+    
+    public var impontanceLevel: Int = 10 {
+        didSet {
+            if impontanceLevel > 100 {
+                impontanceLevel = 100
+            } else if impontanceLevel < 1 {
+                impontanceLevel = 1
+            }
+            
+            sync()
+            _valueEditTime = 0
+        }
+    }
+    
+    /// 数据改写次数
+    ///
+    /// Data write count
+    private var _valueEditTime = 0
     
     public var count: Int {
         return value.count
@@ -63,7 +62,7 @@ public class KeyValueDictionaryInUserDefaults: NSObject, KeyValueData {
     
     required public init(withKey: String) {
         key = withKey
-        if let _value = UserDefaults.standard.object(forKey: key) {
+        if let _value = NSDictionary(contentsOfFile: NSHomeDirectory()+"/Documents/\(key).plist") {
             value =  _value as! [String: Any]
         }
     }
@@ -76,8 +75,9 @@ public class KeyValueDictionaryInUserDefaults: NSObject, KeyValueData {
         value = [:]
         sync()
     }
-
+    
     public func sync() {
-        UserDefaults.standard.synchronize()
+        NSDictionary(dictionary: value).write(toFile: NSHomeDirectory()+"/Documents/\(key).plist", atomically: true)
+        _valueEditTime = 0
     }
 }
