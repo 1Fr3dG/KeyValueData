@@ -1,6 +1,6 @@
 # KeyValueData
 
-[![CI Status](http://img.shields.io/travis/1Fr3dG/KeyValueData.svg?style=flat)](https://travis-ci.org/Alfred Gao/KeyValueData)
+[![CI Status](http://img.shields.io/travis/1Fr3dG/KeyValueData.svg?style=flat)](https://travis-ci.org/1fr3dg/KeyValueData)
 [![Version](https://img.shields.io/cocoapods/v/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![License](https://img.shields.io/cocoapods/l/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![Platform](https://img.shields.io/cocoapods/p/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
