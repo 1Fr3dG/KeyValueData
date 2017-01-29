@@ -87,7 +87,7 @@ public class KeyValueDictionaryInSqlite: NSObject, KeyValueData {
         }
     }
     
-    init(withKey: String, inDatabase: String) {
+    public init(withKey: String, inDatabase: String) {
         key = withKey
         dbFile = NSHomeDirectory()+"/Documents/\(inDatabase).sqlite"
         do {
