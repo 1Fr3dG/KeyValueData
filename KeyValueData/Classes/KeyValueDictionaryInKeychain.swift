@@ -51,7 +51,7 @@ public class KeyValueDictionaryInKeychain: NSObject, KeyValueData {
     
     public init(withKey: String, accessGroup: String) {
         key = withKey
-        keychain = Keychain(service: withKey, accessGroup: accessGroup).synchronizable(true)
+        keychain = Keychain(accessGroup: accessGroup).synchronizable(true)
         if let _valueData = keychain[data: key] {
             value =  NSKeyedUnarchiver.unarchiveObject(with: _valueData) as! [String: Any]
         }
