@@ -9,6 +9,10 @@ Manage key-value data with same protocol, for kinds of backends.
 [![License](https://img.shields.io/cocoapods/l/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![Platform](https://img.shields.io/cocoapods/p/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 
+* Enable accessGroup support for KeyChain
+	* `public init(withKey: String, accessGroup: String)`
+
+# 1.0.1
 * Enable define database for SQLite backend
 
 # 1.0.0

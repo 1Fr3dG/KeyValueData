@@ -10,6 +10,7 @@ import KeychainAccess
 public class KeyValueDictionaryInKeychain: NSObject, KeyValueData {
 
     public let key: String
+    private let keychain: Keychain
     
     /// Keychain 中的数据每次写强制存储
     ///
@@ -42,7 +43,15 @@ public class KeyValueDictionaryInKeychain: NSObject, KeyValueData {
     
     required public init(withKey: String) {
         key = withKey
-        let keychain = Keychain()
+        keychain = Keychain().synchronizable(true)
+        if let _valueData = keychain[data: key] {
+            value =  NSKeyedUnarchiver.unarchiveObject(with: _valueData) as! [String: Any]
+        }
+    }
+    
+    public init(withKey: String, accessGroup: String) {
+        key = withKey
+        keychain = Keychain(service: withKey, accessGroup: accessGroup).synchronizable(true)
         if let _valueData = keychain[data: key] {
             value =  NSKeyedUnarchiver.unarchiveObject(with: _valueData) as! [String: Any]
         }
@@ -61,7 +70,6 @@ public class KeyValueDictionaryInKeychain: NSObject, KeyValueData {
     ///
     /// Save data
     private func _saveToKeychain() {
-        let keychain = Keychain().synchronizable(true)
         let data = NSKeyedArchiver.archivedData(withRootObject: value)
         keychain[data: key] = data
     }
