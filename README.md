@@ -12,11 +12,26 @@ Manage key-value data with same protocol, for kinds of backends.
 ## Example
 
 ~~~swift
-var _data: KeyValueData = KeyValueDictionaryInKeychain(withKey: "account")
+// Load/Create data
 
+var _dataInKeyChain: KeyValueData = KeyValueDictionaryInKeychain(withKey: "account")
+
+var _dataInUserDefaults: KeyValueData = KeyValueDictionaryInUserDefaults(withKey: "account")
+
+// Data in => NSHomeDirectory()+"/Documents/\(withKey).plist"
+var _dataInPlist: KeyValueData = KeyValueDictionaryInDocumentsPlist(withKey: "account")
+
+// Data in => NSHomeDirectory()+"/Documents/KeyValue.sqlite", table: withKey
+var _dataInSQLite: KeyValueData = KeyValueDictionaryInSqlite(withKey: "account")
+
+// set/get data from KV
 _data["accountid"] = "12345678"
-
 let id = _data["accountid"] as! String
+
+// write data to disk
+// this is not necessary for KeyChain/SQLite
+_data.sync()
+
 ~~~
 
 ## Requirements
