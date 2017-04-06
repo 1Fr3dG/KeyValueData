@@ -9,6 +9,9 @@ Manage key-value data with same protocol, for kinds of backends.
 [![License](https://img.shields.io/cocoapods/l/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![Platform](https://img.shields.io/cocoapods/p/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 
+* Change ios.deployment_target to 9.0
+
+# 1.0.5
 * KeyChain with accessGroup will reload data before **EVERY** get / set
 	* to reduce data conflict between two sessions with same key/accessGroup
 	* technically, one session loads data between another session's loading & saving will still cause confliction. but we **IDEALLY ASSUME** that will not happen

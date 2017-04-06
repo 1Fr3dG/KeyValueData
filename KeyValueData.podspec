@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KeyValueData'
-  s.version          = '1.0.5'
+  s.version          = '1.1.0'
   s.summary          = 'Key-Value data store protocol.'
 
   s.description      = <<-DESC
@@ -13,7 +13,7 @@ Include .plist, KeyChain, UserDefault as well as Sqlite.
   s.author           = { 'Alfred Gao' => 'alfredg@alfredg.cn' }
   s.source           = { :git => 'https://github.com/1fr3dg/KeyValueData.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'KeyValueData/Classes/**/*'
   
