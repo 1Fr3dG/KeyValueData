@@ -9,6 +9,10 @@ Manage key-value data with same protocol, for kinds of backends.
 [![License](https://img.shields.io/cocoapods/l/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![Platform](https://img.shields.io/cocoapods/p/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 
+* Change project to support Swift 4
+
+# 1.1.0
+
 * Change ios.deployment_target to 9.0
 
 # 1.0.5

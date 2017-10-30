@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KeyValueData'
-  s.version          = '1.1.0'
+  s.version          = '1.2.0'
   s.summary          = 'Key-Value data store protocol.'
 
   s.description      = <<-DESC
