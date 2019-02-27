@@ -29,7 +29,7 @@ public class KeyValueDictionaryInDocumentsPlist: NSObject, KeyValueData {
         return value.map{(key, value) -> String in return key}
     }
     
-    public var impontanceLevel: Int = 10 {
+    public var impontanceLevel: Int = 1 {
         didSet {
             if impontanceLevel > 100 {
                 impontanceLevel = 100

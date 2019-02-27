@@ -11,7 +11,7 @@ public class KeyValueDictionaryInUserDefaults: NSObject, KeyValueData {
 
     public let key: String
     
-    public var impontanceLevel: Int = 16 {
+    public var impontanceLevel: Int = 1 {
         didSet {
             if impontanceLevel > 256 {
                 impontanceLevel = 256
