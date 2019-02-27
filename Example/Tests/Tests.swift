@@ -24,6 +24,7 @@ class KeyValueDataTests: XCTestCase {
         do {
             try filemanager.removeItem(atPath: NSHomeDirectory()+"/Documents/\(testKey1).plist")
         } catch {
+            print("File remove: "+NSHomeDirectory()+"/Documents/\(testKey1).plist")
         }
         
         do {

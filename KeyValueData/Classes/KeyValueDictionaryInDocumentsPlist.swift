@@ -13,6 +13,7 @@
 public class KeyValueDictionaryInDocumentsPlist: NSObject, KeyValueData {
 
     public let key: String
+    private let fileurl: URL
     
     var value: [String: Any] = [:] {
         didSet {
@@ -62,7 +63,14 @@ public class KeyValueDictionaryInDocumentsPlist: NSObject, KeyValueData {
     
     required public init(withKey: String) {
         key = withKey
-        if let _value = NSDictionary(contentsOfFile: NSHomeDirectory()+"/Documents/\(key).plist") {
+        
+        do {
+            let _pathurl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            fileurl = _pathurl.appendingPathComponent("\(key).plist", isDirectory: false)
+        } catch {
+            fileurl = URL(fileURLWithPath: NSHomeDirectory()+"/\(key).plist")
+        }
+        if let _value = NSDictionary(contentsOf: fileurl) {
             value =  _value as! [String: Any]
         }
     }
@@ -77,7 +85,11 @@ public class KeyValueDictionaryInDocumentsPlist: NSObject, KeyValueData {
     }
     
     public func sync() {
-        NSDictionary(dictionary: value).write(toFile: NSHomeDirectory()+"/Documents/\(key).plist", atomically: true)
+            do {
+                try NSDictionary(dictionary: value).write(to: fileurl)
+            } catch {
+                
+            }
         _valueEditTime = 0
     }
 }
