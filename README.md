@@ -24,6 +24,9 @@ var _dataInPlist: KeyValueData = KeyValueDictionaryInDocumentsPlist(withKey: "ac
 // Data in => NSHomeDirectory()+"/Documents/KeyValue.sqlite", table: withKey
 var _dataInSQLite: KeyValueData = KeyValueDictionaryInSqlite(withKey: "account")
 
+// Data in iCloud KV storage with key: withKey
+var _dataIniCloud: KeyValueData = KeyValueDictionaryIniCloud(withKey: "account")
+
 // set/get data from KV
 _data["accountid"] = "12345678"
 let id = _data["accountid"] as! String
@@ -36,7 +39,7 @@ _data.sync()
 
 ## Requirements
 
-* iOS 9.0+
+* iOS 11.0+
 
 ## Installation
 
