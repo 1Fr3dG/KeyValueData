@@ -37,6 +37,8 @@ class KeyValueDataTests: XCTestCase {
         } catch {
 
         }
+        
+        NSUbiquitousKeyValueStore.default.removeObject(forKey: self.testKey1)
     }
     
     override func tearDown() {
@@ -222,6 +224,7 @@ class KeyValueDataTests: XCTestCase {
     
     func testSetValue10TimesCauseAutoSave_PlistAsBackend() {
         let kvdata = KeyValueDictionaryInDocumentsPlist(withKey: self.testKey1)
+        kvdata.impontanceLevel = 10
         for _key in 0..<15 {
             kvdata[String(_key)] = _key * _key
         }
@@ -256,4 +259,35 @@ class KeyValueDataTests: XCTestCase {
         expect(ktdata1["K not there"]).to(beNil())
     }
     
+    
+    // iCloud
+    // iCloud sync between devices NOT tested here
+    func testInitWithNoDataShouldGetZeroDictionary_iCloudAsBackend() {
+        let kvdata = KeyValueDictionaryIniCloud(withKey: self.testKey1)
+        expect(kvdata.value.count) == 0
+        expect(kvdata.count) == 0
+    }
+    
+    func testReloadDataFromSavedDictionary_iCloudAsBackend() {
+        let testDict: [String : Any] = ["K1" : "V1", "K2" : 2, "K3" : 3.3 as Float, "K4" : true]
+        let kvdata = KeyValueDictionaryIniCloud(withKey: self.testKey1)
+        kvdata.value = testDict
+        // kvdata 数据设置完成
+        expect(kvdata.count) == 4
+        expect(kvdata["K1"] as? String) == "V1"
+        expect(kvdata["K2"] as? Int) == 2
+        expect(kvdata["K3"] as? Float) == 3.3
+        expect(kvdata["K4"] as? Bool) == true
+        expect(kvdata["K not there"]).to(beNil())
+        // 删除对象
+        kvdata.sync()
+        // 创建新对象
+        let ktdata1 = KeyValueDictionaryIniCloud(withKey: self.testKey1)
+        expect(ktdata1.count) == 4
+        expect(ktdata1["K1"] as? String) == "V1"
+        expect(ktdata1["K2"] as? Int) == 2
+        expect(ktdata1["K3"] as? Float) == 3.3
+        expect(ktdata1["K4"] as? Bool) == true
+        expect(ktdata1["K not there"]).to(beNil())
+    }
 }

@@ -220,7 +220,7 @@
 						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -520,6 +520,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeyValueData_Example.entitlements;
 				DEVELOPMENT_TEAM = 34PCH5MRLB;
 				INFOPLIST_FILE = KeyValueData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -537,6 +538,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeyValueData_Example.entitlements;
 				DEVELOPMENT_TEAM = 34PCH5MRLB;
 				INFOPLIST_FILE = KeyValueData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
