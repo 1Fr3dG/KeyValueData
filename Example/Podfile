@@ -1,5 +1,5 @@
 use_frameworks!
-platform :ios, '11.0'
+platform :ios, '14.1'
 
 target 'KeyValueData_Example' do
   pod 'KeyValueData', :path => '../'
