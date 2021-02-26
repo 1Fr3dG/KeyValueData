@@ -9,6 +9,10 @@ Manage key-value data with same protocol, for kinds of backends.
 [![License](https://img.shields.io/cocoapods/l/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 [![Platform](https://img.shields.io/cocoapods/p/KeyValueData.svg?style=flat)](http://cocoapods.org/pods/KeyValueData)
 
+* Change ios.deployment_target to 14.1
+* Update podspec to use updated pods (KeychainAccess)
+
+# 1.3.0
 * Change ios.deployment_target to 11.0
 * Add iCloud as backend storage
 	* Note there is a limitation of iCloud data size, it is not for 'data' but configuration

@@ -39,7 +39,7 @@ _data.sync()
 
 ## Requirements
 
-* iOS 11.0+
+* iOS 14.0+
 
 ## Installation
 
